@@ -5,7 +5,7 @@
 -----
 
   ## Description
-   animal and zoo keepers catalog for the zoo
+   Node.js application that allows user to view departments, roles, employees,add, update,delete departments, roles, and employees
 
   <a name="installation"></a>
   ## Installation
