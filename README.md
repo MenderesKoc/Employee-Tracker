@@ -19,7 +19,7 @@
   ## Questions
   Contact for questions and suggestions:
 
-  Menderes
+  Menderes KOC
 
   [email](mailto:mndrs.kc@gmail.com)
 
