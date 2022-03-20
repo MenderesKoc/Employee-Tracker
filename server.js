@@ -1,6 +1,7 @@
 const db = require('./db/connection');
 const inquirer = require('inquirer');
 const department = require('./utils/models/department.js');
+const cTable = require('console.table');
 
 inquirer.prompt([
     {
@@ -8,40 +9,52 @@ inquirer.prompt([
         type: 'list',
         message: 'What would you like to do:',
         choices: [
+            'View all Departments',
             'View Departments',
-            'View Roles',
-            'View Employees',
             'Add Department',
+            'Update Department',
             'Add Role',
             'Add Employee',
-            'Update Employee Role',
+            'View all employee',
+            'Remove Department',
             'Exit'
         ]
     }
 ])
     .then(questions => {
         switch (questions.choices) {
-            case "View Departments":
+            case "View all Departments":
                 department.viewAllDepartments();
                 break;
-                "View Roles":
-                viewRoles();
+
+            case "View Departments":
+                department.viewDepartment();
                 break;
-            case "View Employees":
-                add.viewEmployees();
+
+            case
+                "Add Department":
+                department.addDepartment();
                 break;
-            case "Add Department":
-                add.addDepartment();
+
+            case "Update Department":
+                department.updateDepartment();
                 break;
+
             case "Add Role":
-                add.addRole();
+                department.addrole();
                 break;
-            case "Add Employee":
-                add.addEmployee();
-                break;
+
             case "Update Employee Role":
-                updated.updateEmployeeRole();
-                break;* /
+                department.updateEmployee();
+                break;
+            case "View all employee":
+                department.viewAllEmployees();
+                break;
+
+            case "Remove Department":
+                department.removeDepartment();
+                break;
+
             case 'Exit': console.log('Goodbye')
                 db.end();
                 break;

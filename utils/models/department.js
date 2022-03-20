@@ -1,8 +1,7 @@
 
 const inquirer = require('inquirer');
 const departmentController = require('../controllers/department_controller');
-
-
+const cTable = require('console.table');
 
 function viewDepartment() {
     inquirer.prompt([
@@ -17,15 +16,21 @@ function viewDepartment() {
             departmentController.get(answer.departmentID);
         });
 }
+
 function viewAllDepartments() {
     departmentController.index();
 }
+
+function viewAllEmployees() {
+    departmentController.viewAllEmployees();
+}
+
 function addDepartment() {
     inquirer.prompt([
         {
             type: 'input',
             name: 'departmentName',
-            message: 'Enter the ID of the department you want to view?',
+            message: 'Enter name of the department you want to view?',
 
         }
     ])
@@ -33,6 +38,21 @@ function addDepartment() {
             departmentController.add(answer.departmentName);
         });
 }
+
+function addrole() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'newrole',
+            message: 'Enter name of the new role?',
+
+        }
+    ])
+        .then(function (answer) {
+            departmentController.add(answer.newrole);
+        });
+}
+
 function updateDepartment() {
     inquirer.prompt([
         {
@@ -53,5 +73,21 @@ function updateDepartment() {
         });
 }
 
+function removeDepartment() {
+    inquirer.prompt([
+        {
+            name: 'dept',
+            type: 'departmentId',
+            message: 'Which department would you like to delete?',
 
-module.exports = { viewDepartment, viewAllDepartments, addDepartment, updateDepartment };
+        }
+    ]).then(function (answer) {
+
+        departmentController.update(answer.departmentId);
+    });
+    
+
+}
+
+
+module.exports = { viewDepartment, viewAllDepartments, addDepartment, updateDepartment, addrole, viewAllEmployees, removeDepartment };
