@@ -85,7 +85,7 @@ function removeDepartment() {
 
         departmentController.update(answer.departmentId);
     });
-    
+
 
 }
 
